@@ -1,15 +1,211 @@
-<html>
-   <head>
-       <title>Sample HTML Code</title>
-   </head>
-   <body>
-       <h1>Hello World</h1>
-   </body>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournoi Tic-Tac-Toe 50x50</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>🏆 Tournoi Tic-Tac-Toe Cash 🏆</h1>
+    <h2>🔥 **Gagnez 250 Gourdes** en terminant **1er** ! 🔥</h2>
+
+    <div id="registration">
+      <h3>💰 Comment Participer ?</h3>
+      <p>1️⃣ Envoyez **25 Gourdes** sur **NatCash**</p>
+      <p>2️⃣ **Prenez une capture d’écran** de l'ID de transaction</p>
+      <p>3️⃣ Entrez **votre numéro** et téléchargez la preuve</p>
+      
+      <p><strong>📌 Numéro NatCash :</strong> <span style="color:red;"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+      "http://www.w3.org/TR/html4/strict.dtd">+50941940490</span></p>
+
+      <label for="phone">📞 Votre Numéro :</label>
+      <input type="text" id="phone" placeholder="Ex : 50912345678" required>
+
+      <label for="paymentProof">📸 Preuve de Paiement :</label>
+      <input type="file" id="paymentProof" accept="image/*" required>
+
+      <button id="registerBtn">✅ Valider l'Inscription</button>
+    </div>
+
+    <div id="playersList" style="display: none;">
+      <h3>👥 Joueurs Inscrits</h3>
+      <ul id="players"></ul>
+    </div>
+
+    <div id="gameArea" style="display: none;">
+      <h3>🎮 Tic-Tac-Toe Tournoi</h3>
+      <div id="grid"></div>
+      <button id="startBtn">🚀 Commencer le Jeu</button>
+    </div>
+
+    <div id="leaderboard" style="display: none;">
+      <h3>🏅 Classement du Tournoi</h3>
+      <ul id="leaderboardList"></ul>
+    </div>
+
+    <div id="winner" style="display: none;">
+      <h2>🏆 Félicitations au gagnant ! 🏆</h2>
+      <p id="winnerName"></p>
+      <p>🎁 Vous recevez **250 Gourdes** sur NatCash !</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+         </html>
+
+         <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tournoi Tic-Tac-Toe 50x50</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="container">
+    <h1>🏆 Tournoi Tic-Tac-Toe Cash 🏆</h1>
+    <h2>🔥 **Gagnez 250 Gourdes** en terminant **1er** ! 🔥</h2>
+
+    <div id="registration">
+      <h3>💰 Comment Participer ?</h3>
+      <p>1️⃣ Envoyez **25 Gourdes** sur **NatCash**</p>
+      <p>2️⃣ **Prenez une capture d’écran** de l'ID de transaction</p>
+      <p>3️⃣ Entrez **votre numéro** et téléchargez la preuve</p>
+      
+      <p><strong>📌 Numéro NatCash :</strong> <span style="color:red;"><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN"
+      "http://www.w3.org/TR/html4/strict.dtd">+50941940490</span></p>
+
+      <label for="phone">📞 Votre Numéro :</label>
+      <input type="text" id="phone" placeholder="Ex : 50912345678" required>
+
+      <label for="paymentProof">📸 Preuve de Paiement :</label>
+      <input type="file" id="paymentProof" accept="image/*" required>
+
+      <button id="registerBtn">✅ Valider l'Inscription</button>
+    </div>
+
+    <div id="playersList" style="display: none;">
+      <h3>👥 Joueurs Inscrits</h3>
+      <ul id="players"></ul>
+    </div>
+
+    <div id="gameArea" style="display: none;">
+      <h3>🎮 Tic-Tac-Toe Tournoi</h3>
+      <div id="grid"></div>
+      <button id="startBtn">🚀 Commencer le Jeu</button>
+    </div>
+
+    <div id="leaderboard" style="display: none;">
+      <h3>🏅 Classement du Tournoi</h3>
+      <ul id="leaderboardList"></ul>
+    </div>
+
+    <div id="winner" style="display: none;">
+      <h2>🏆 Félicitations au gagnant ! 🏆</h2>
+      <p id="winnerName"></p>
+      <p>🎁 Vous recevez **250 Gourdes** sur NatCash !</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
-<ALOASK-SEPARATE-EDITORS>html {
-   background: linear-gradient(to right, dodgerblue 0%, deepskyblue 100%);
+
+let players = [];
+let scores = {};
+
+document.getElementById("registerBtn").addEventListener("click", registerPlayer);
+
+function registerPlayer() {
+  const phone = document.getElementById("phone").value;
+  const file = document.getElementById("paymentProof").files[0];
+
+  if (!phone || !file) {
+    alert("❌ Veuillez entrer votre numéro et téléverser la capture d’écran !");
+    return;
+  }
+
+  const isPaid = confirm("✅ Avez-vous bien envoyé 25 Gourdes à : 123-456-7890 ?");
+  
+  if (isPaid) {
+    alert("🎉 Inscription réussie !");
+    players.push(phone);
+    scores[phone] = 0; // Score initial à 0
+
+    document.getElementById("registration").style.display = "none";
+    document.getElementById("playersList").style.display = "block";
+    document.getElementById("gameArea").style.display = "block";
+
+    updatePlayersList();
+    startGame();
+  } else {
+    alert("❌ Paiement non confirmé !");
+  }
 }
-h1{
-   color: white;
+
+function updatePlayersList() {
+  const playersList = document.getElementById("players");
+  playersList.innerHTML = "";
+
+  players.forEach(player => {
+    let li = document.createElement("li");
+    li.textContent = player;
+    playersList.appendChild(li);
+  });
 }
-<ALOASK-SEPARATE-EDITORS>console.log('JavaScript Console');
+
+function startGame() {
+  const grid = document.getElementById("grid");
+  grid.innerHTML = ""; // Réinitialiser la grille
+
+  for (let i = 0; i < 50 * 50; i++) {
+    let cell = document.createElement("div");
+    cell.dataset.clicked = "false";
+
+    cell.addEventListener("click", function () {
+      if (this.dataset.clicked === "false") {
+        this.innerHTML = "X"; 
+        this.dataset.clicked = "true";
+
+        let player = players[Math.floor(Math.random() * players.length)]; // Choisir un joueur au hasard
+        scores[player] += 1; // Augmenter son score
+
+        updateLeaderboard();
+        checkWinner();
+      }
+    });
+
+    grid.appendChild(cell);
+  }
+
+  document.getElementById("startBtn").addEventListener("click", function () {
+    alert("🚀 Le tournoi commence !");
+  });
+}
+
+function updateLeaderboard() {
+  const leaderboard = document.getElementById("leaderboardList");
+  leaderboard.innerHTML = "";
+
+  let sortedPlayers = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+
+  sortedPlayers.forEach(player => {
+    let li = document.createElement("li");
+    li.textContent = `${player} - ${scores[player]} pts`;
+    leaderboard.appendChild(li);
+  });
+
+  document.getElementById("leaderboard").style.display = "block";
+}
+
+function checkWinner() {
+  let sortedPlayers = Object.keys(scores).sort((a, b) => scores[b] - scores[a]);
+
+  if (scores[sortedPlayers[0]] >= 50) { // Condition de victoire (ex: 50 points)
+    document.getElementById("winner").style.display = "block";
+    document.getElementById("winnerName").textContent = `🥇 Gagnant : ${sortedPlayers[0]}`;
+  }
+}
